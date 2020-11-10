@@ -1,0 +1,122 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 04
+
+=============================================
+Programming Style
+=============================================
+
+---------------------------------------------
+Exercise 1-1
+---------------------------------------------
+#define TRUE 1
+#define FALSE 0
+
+if ((ch = getchar()) == EOF)
+	eof = TRUE;
+
+---------------------------------------------
+Exercise 1-2
+---------------------------------------------
+int smaller(char *s, char *t) {
+	return (strcmp(s, t) < 0)
+}
+
+---------------------------------------------
+Exercise 1-3
+---------------------------------------------
+ok, terrible names
+
+---------------------------------------------
+Exercise 1-4
+---------------------------------------------
+if (c != 'y' && c != 'Y')
+	return;
+----------------------
+if (length > BUFFSIZE)
+	length = BUFFSIZE
+----------------------
+flag = !flag
+----------------------
+if (*line = '"')
+	quote = 1;
+else
+	quote = 0;
+
+---------------------------------------------
+Exercise 1-5
+---------------------------------------------
+unkown evaluation order for args
+
+---------------------------------------------
+Exercise 1-6
+---------------------------------------------
+Possible outcomes:
+	1 2
+	2 1
+	1 1
+
+---------------------------------------------
+Exercise 1-7
+---------------------------------------------
+if (istty(stdin) && istty(stdout) && istty(stderr))
+	return 0;
+----------------------
+return retval;
+----------------------
+for (k = 0; k < 5; k++) {
+	scanf("%lf", &dx);
+	x += dx;
+}
+
+---------------------------------------------
+Exercise 1-8
+---------------------------------------------
+for (int count = 0; i < total; i++) {
+	if (this.getName(count) == nameTable.userName()) {
+		return true;
+	}
+}
+
+---------------------------------------------
+Exercise 1-9
+---------------------------------------------
+c is found twice
+parentheses around text after #define ISDIGIT(c)
+do not need "? 1 : 0" since it will return that regardless
+
+---------------------------------------------
+Exercise 1-10
+---------------------------------------------
+static const double FTZMETER = 0.3048;
+static const double METERZFT = 3.28084;
+static const double MIZFT = 5280.0;
+static const double MIZKM = 1.609344;
+static const double SQMIZSQKM = 2.589988
+
+---------------------------------------------
+Exercise 1-11
+---------------------------------------------
+function does not return anything - it is "void"
+
+tests if n > MAX or if n is odd
+
+clearly the function writes a message, it's in the name
+line_number is incremented by 2, not 1
+
+=============================================
+Python
+=============================================
+Q2.1 Look at the students input file in the directory. Write a Python program that, for each student, computes the average of all the scores for that student, prints 2 columns: the name, followed by the average. Submit s1.py.
+ok
+
+Q2.2 Same thing, but the input file will be a CSV. Submit s2.py.
+ok
+
+Q2.3 Look at the ids file.
+
+Q2.4 Modify id.py
+ok
+
+Q2.5 parsePhoneNrs.py
+ok

@@ -1,0 +1,64 @@
+README
+
+Yonatan Carver
+CS 265 - Advanced Programming Techniques
+Assignment 02
+Due: 3/8/2018
+
+python 2.7.12
+Ubuntu 16.04.3 LTS -- xenial
+
+-------------------------------------------------------------------------------
+List of Files:
+	- README
+	- findStops.py
+
+-------------------------------------------------------------------------------
+
+Python Module(s) Used:
+	- json
+	- urllib
+	- sys
+	- getopt
+	- math
+	- philly_loc - returns a (lat, long) in the Philadelphia area
+
+===============================================================================
+findStops.py
+===============================================================================
+
+./findStops.py -n#
+python2 findStops.py -n#
+
+PROBLEM:
+			Pull down Septa stop data (in JSON format) from the Internet &
+			find a specific number of nearby Septa stops (specified by
+			command line argument)
+
+			JSON URL: http://www3.septa.org/hackathon/Stops/?req1=23
+
+DESCRIPTION:
+			The user enters a number (command line argument) that
+			specifies	the number of closest stops to their current location
+			they would like. The program will output the n number of stops
+			in ascending order.
+
+INPUTS:
+			-n#		(#: number of stops)
+			default (if no user input): 5
+
+OUTPUTS:
+			DISTANCE	LOCATION	(LAT, LONG)	closest stop
+			DISTANCE	LOCATION	(LAT, LONG)		.
+			DISTANCE	LOCATION	(LAT, LONG)		.
+			DISTANCE	LOCATION	(LAT, LONG)		.
+			DISTANCE	LOCATION	(LAT, LONG)	farthest stop
+
+	Sample output (./findStops.pt -n6):
+
+	0.1915149 	 Germantown Av ; Pike St 		(40.0124220,-75.1519820)
+	0.1915256 	 Germantown Av ; Butler St 		(40.0107960,-75.1512910)
+	0.1916544 	 Germantown Av ; Lycoming St 		(40.0143520,-75.1529440)
+	0.1916692 	 Germantown Av ; Erie Av 		(40.0090190,-75.1506600)
+	0.1916881 	 Germantown Av ; Pike St 		(40.0126730,-75.1522770)
+	0.1916960 	 Germantown Av ; Broad St 		(40.0101360,-75.1511870)

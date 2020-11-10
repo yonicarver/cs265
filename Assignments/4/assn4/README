@@ -1,0 +1,165 @@
+README
+
+Yonatan Carver
+CS 265 - Advanced Programming Techniques
+Assignment 04 - CD Database
+Due: 3/21/2018
+
+python 2.7.12
+Ubuntu 16.04.3 LTS -- xenial
+
+-------------------------------------------------------------------------------
+List of Files:
+	- README
+	- makefile
+
+-------------------------------------------------------------------------------
+
+Python Module(s) Used:
+	- sys
+	- os
+	- argpase
+
+===============================================================================
+cddb
+===============================================================================
+
+./cddb [-h] [-l] [-d] [-a]
+python2 cddb [-h] [-l] [-d] [-a]
+
+PROBLEM
+	Write a command-line utility called cddb to maintain a flat-file database
+	of album information. You will allow the user to view album info, add a
+	new entry, or delete an entry, where each entry is an album w/all of the
+	track information.
+
+DESCRIPTION
+	User will specify an environment variable called "CDDB". Variable "CDDB"
+	will be the location of their database file. After exporting this variable,
+	the user will enter one of the four commands to the command-line utility,
+	cddb. Users will follow the on-screen instructions to complete their desired
+	task.
+
+INPUT
+	-h -- help/usage information
+	-l -- list all albums in the database
+	-d -- delete an album from the database
+	-a -- add an album to the database
+
+OUTPUT
+	./cddb -l
+		LIST ALBUM
+			- display an enumerated, alphabetical list of artists
+			- user chooses an artist by entering their corresponding number
+			  (or <q> to quit)
+			- display an enumerated, chronological list of albums by each
+			  artist by their release dates
+			- user chooses an album by its corresponding number (or <a> to
+			  return to the above (artist list) menu)
+			- display track list
+			- user chooses whether to exit or return to the above menu
+			  (album list)
+		EXAMPLE
+			./cddb -l
+			1 Bob Dylan
+			2 Led Zeppelin
+			3 Yoni Carver
+		   ~> Enter # of artist or <q> to quit: 1
+			1 II
+			2 In Through the Outdoor
+		   ~> Enter # of album or <a> to return to previous menu: 1
+			1 Whole Lotta Love
+			2 What Is and What Should Never Be
+			3 The Lemon Song
+			4 Thank You
+			5 Heartbreaker
+			6 Living Loving Maid (She's Just a Woman)
+			7 Ramble On
+			8 Moby Dick
+			9 Bring It on Home
+		   ~> Return to album menu? (y/n) n
+
+
+	./cddb -d
+		DELETE ALBUM
+			- display an enumerated, alphabetical list of artists
+			- user chooses an artist by entering their corresponding number
+			  (or <q> to quit)
+			- display an enumerated, chronological list of albums by each
+			  artist by their release dates
+			- user chooses an album to delete by entering its corresponding
+			  number (or <a> to return to the above (artist list) menu)
+		EXAMPLE
+			./cddb -d
+			1 Bob Dylan
+			2 Led Zeppelin
+			3 Yoni Carver
+		   ~> Enter # of artist or <q> to quit: 1
+			1 II
+			2 In Through the Outdoor
+		   ~> Enter # of album to delete or <a> to return to previous menu: 1
+
+
+	./cddb -a
+		ADD ALBUM
+			- user enters an artist name
+			- user enters an album name
+			- user enters a release date (must be a 4 digit year)
+			- user enters each song in album (in track list order)
+		EXAMPLE
+			./cddb -a
+			Enter artist name: Yoni Carver
+			Enter album name: Helloworld
+			Enter release date: 2018
+			Enter song titles, press <enter> again to save
+			Song name: song 1
+			Song name: song 2
+			Song name: song 3
+			Song name: song 4
+
+
+	./cddb -h
+		HELP/USAGE
+			- display usage information
+		EXAMPLE
+			usage: cddb [-h] [-l] [-d] [-d]
+
+			CD Database
+
+			optional arguments:
+			-h, --help	show this help message and exit
+			-l			list items in database
+			-d			delete items from database
+			-a			add items to the database
+
+
+
+
+DATABASE STRUCTURE
+database =
+	[
+		{
+			'artist' : 'artist_name1',
+			'album' : 'album_name1',
+			'release_date' : '4_digit_year',
+			'songs' :
+				[
+					'song1',
+					'song2',
+					'song3',
+					...
+				]
+		}
+		{
+			'artist' : 'artist_name2',
+			'album' : 'album_name2',
+			'release_date' : '4_digit_year',
+			'songs' :
+				[
+					'song1',
+					'song2',
+					'song3',
+					...
+				]
+		}
+	]

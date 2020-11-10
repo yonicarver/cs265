@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Yonatan Carver
+# CS 265 - Assignment 1 - Problem 2
+
+# -----------------------------------------------------------------------------
+
+# DESCRIPTION: Find the longest thread and list all threads of that length
+# INPUTS: ARCHIVE (location to run this script)
+# OUTPUTS: xx filename
+#		xx: thread length
+#		filename: names of files with longest length
+
+# -----------------------------------------------------------------------------
+
+# get list of all threads with their lengths
+list=$(find $ARCHIVE -name "prob*" -printf "%f\n" | egrep -o "prob[0-9]*" | sort -n | uniq -ic | sort -rn)
+
+# find the longest thread
+max=$(echo "$list" | egrep -o "\<[0-9]*" | sort -nr | head -n1)
+
+# list all of the longest threads
+echo "$list" | egrep -o "\<"$max".*"

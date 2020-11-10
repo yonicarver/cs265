@@ -1,0 +1,80 @@
+Yonatan Carver
+CS 265
+Lab 02
+1/26/2018
+
+
+Q1. What is the output?
+  ./.bash_history
+  ./.vim/undo/%home%yac25%CS265%git%lab01%lab1
+  ./.vim/undo/%home%yac25%.tmux.conf
+  ./.vim/undo/%home%yac25%public_html%index.html
+  ./.vim/undo/%home%yac25%CS265%git%lab01%a space
+  ./.vim/undo/%home%yac25%CS265%git%lab02%lab2
+  ./CS265/git/.git/refs/heads/master
+  ./CS265/git/.git/refs/remotes/origin/master
+  ./CS265/git/.git/objects/08/2be3abacfa7d87d8526e83c134ebbc516d6410
+  ./CS265/git/.git/objects/64/a2b000b7286ecf7c3733f52bac2e4a05987b00
+  ./CS265/git/.git/objects/bc/7dbe8bab102544ae4211f7c52d47912882801d
+  ./CS265/git/.git/objects/f1/23cc177e68508aa6f6e5c77836d1a82790c6a9
+  ./CS265/git/.git/index
+  ./CS265/git/.git/COMMIT_EDITMSG
+  ./CS265/git/.git/logs/refs/heads/master
+  ./CS265/git/.git/logs/refs/remotes/origin/master
+  ./CS265/git/.git/logs/HEAD
+  ./CS265/git/lab01/annoy
+  ./CS265/git/lab01/annoy.cc
+  ./CS265/git/lab01/funny
+  ./CS265/git/lab01/hello.bash
+  ./CS265/git/lab01/itemList
+  ./CS265/git/lab01/itemList-2cols
+  ./CS265/git/lab01/TelecomTruths
+  ./CS265/git/lab01/UnitTestingPhase
+  ./CS265/git/lab01/lab1
+  ./CS265/git/lab02/lab2
+  ./public_html/images/drexel.gif
+  ./public_html/images/bulb_icon.png
+  ./public_html/index.html
+  ./.tmux.conf
+  ./.viminfo
+
+Q2. What would the find command be to find all files that end in .bash?
+  find ~/ -name "*.bash"
+
+Q3. What is the output?
+  /home/yac25/git/lab01/hello.bash
+  /home/yac25/CS265/lab02/tmpo/gotMe.bash
+
+Q4. What were the results?
+  97  499 2960 breadIsDangerous.txt
+
+Q5. How could you use grep, wc (with the -l option), and a pipe to find how many lines contain the string "the"?
+  grep -w 'the' breadIsDangerous.txt | wc -l
+
+Q6. What is the difference?
+  There is now a .bak file of spellExample
+
+Q7. Explain the output.
+  The output shows each line of each file compared to each other
+  < and > represent the two files
+  1c1 means that line 1 in file 1 was changed (and remains as line 1)
+  3c3 means that line 3 in file 1 was changed (and remains as line 3)
+  6d5 means that line 6 was deleted in file 1 (and is now line 5)
+
+Q8. What did you see this time?
+  Nothing - the files are exactly the same
+
+Q9. Explain the different return values.
+  0: a line is selected (no error)
+  1: no lines were selected (string not found)
+  2: error occured (noSuchFile does not exist)
+
+Q10. Upload count.bash
+  ok
+
+Q11. Call this script reextend, and upload it w/your lab.
+  ok
+
+Q12. Call this script organiseMusic, and upload it w/your lab.
+  ok
+

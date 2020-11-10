@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ ! -e "squash.awk" ] || [ ! -e "sign.c" ]; then
+	echo "no squash.awk or sign.c file"
+	exit 1
+fi
+
+if [ ! -e "sign" ] || [ ! -x "sign" ]; then
+	echo "compiling sign"
+	gcc -o sign sign.c
+fi
+
+./sign < /usr/share/dict/words | sort | awk -f squash.awk | awk '{print NF " " $0}' | sort -n | tail
+

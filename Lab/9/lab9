@@ -1,0 +1,66 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 09
+
+DEBUGGING, DBG
+--------------------------
+Q1.1 What happened when you ran bug3? Use ls -ot, see if there are any new files
+	in your directory.
+
+	Segmentation fault (core dumped)
+	Yes, file: core
+
+
+Q1.2 In which function did it bomb?
+
+	Bombed in:
+	#1  0x00000000004009ad in inTable ()
+	#2  0x0000000000400920 in main ()
+
+
+Q1.3 For each, below, record what the problem was, and how you fixed it.
+
+	bug1.c -
+		format '%d' expects argument of type 'int *'
+
+		fix:
+			scanf( "%d", &n);
+
+	bug2.c -
+		format '%d' expects argument of type 'int'
+		format %f' expects argument of type 'double'
+
+		fix:
+			print("Pi=%f, n = %d\n", pi, n);
+
+	bug3.c -
+		Segmentation fault (core dumped)
+
+		fix:
+			add "++ numLines" after "st[ numLines ] = strdup( buff );"
+
+	avg.c -
+		format '%d' expects argument of type 'int *'
+
+		fix:
+			scanf("%d", &n);
+
+	A program that causes a segmentation fault:
+		Program is trying to read/write to/from an illegal memory location
+
+		fix:
+			no reference to main()
+
+Q1.4 Why can't the compiler catch this? You can uncover the problem by looking
+	at a stack trace from when the program crashed.
+
+	It is not a syntax error, it is a logical error
+
+
+Q1.5 What happens if you are using qsort to sort integers and accidentally pass
+	the string comparison function?
+
+	An error will occur because the function cannot sort chars
+
+
+

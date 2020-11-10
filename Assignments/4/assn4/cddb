@@ -1,0 +1,247 @@
+#!/usr/bin/python2.7
+
+# python 2.7.12
+# Ubuntu 16.04.3 LTS -- xenial
+
+# Yonatan Carver
+# CS 265 - Advanced Programming Techniques
+# Assignment 04 - CD Databse
+
+# -----------------------------------------------------------------------------
+#
+# Maintain a flat-file datbase, allowing users to query, delete an entry, or
+# create an entry.
+#
+# -----------------------------------------------------------------------------
+
+import sys
+import argparse
+from os import environ
+
+# -----------------------------------------------------------------------------
+# Print items functions
+
+def print_artists(database):
+    """ display enumerated, alphabetical list of artists """
+    print_artists.artists = []
+    for i in database:
+        print_artists.artists.append(i['artist'])
+        # remove duplicates & sort alphabetically
+        print_artists.artists = sorted(list(set(print_artists.artists)))
+    for j, artist in enumerate(print_artists.artists):
+        print('{} {}'.format(j+1, artist))
+def sorted_artists():
+    """ return sorted list of artists """
+    return print_artists.artists
+
+
+def print_albums(database, artist):
+    """ list all albums, enumerated, by release date """
+    print_albums.albums = []
+    for i in database:
+        if i['artist'] == artist:
+            print_albums.albums.append(i['album'])
+        # remove duplicates & sort alphabetically
+        print_albums.albums = sorted(list(set(print_albums.albums)))
+    for j, album in enumerate(print_albums.albums):
+        print('{} {}'.format(j+1, album))
+def sorted_albums():
+    """ return sorted list of albums """
+    return print_albums.albums
+
+
+def print_songs(database, album):
+    """ list all songs in album by track order """
+    for i in database:
+        if i['album'] == album:
+            for j, song in enumerate(i['songs']):
+                print('{} {}'.format(j+1, song[1:]))
+
+# -----------------------------------------------------------------------------
+# Read/Write to .db file functions
+
+def write_to_database(database):
+    """ write database in memory to .db file """
+    with open(db_file, 'a+') as out:      # append to file (a+)
+        for i in database:
+            out.write(i['artist'])
+            out.write('\n')
+            out.write(i['release_date'])
+            out.write(' ')
+            out.write(i['album'])
+            for j in i['songs']:
+                out.write('\n')
+                out.write('-')
+                out.write(j)
+            out.write('\n\n')
+    out.close()
+
+def delete_from_database(database):
+    """ re-write database to .db file with removed entries """
+    with open(db_file, 'w') as out:       # erase & re-write file (w)
+        for i in database:
+            out.write(i['artist'])
+            out.write('\n')
+            out.write(i['release_date'])
+            out.write(' ')
+            out.write(i['album'])
+            for j in i['songs']:
+                out.write('\n')
+                out.write(j)
+            out.write('\n\n')
+    out.close()
+
+# -----------------------------------------------------------------------------
+# Main database functions
+
+def list_albums():
+    """
+    -l: list album
+        - display enumerated, alphabetical list of artists
+        - allow user to choose an artist by entering number (q to quit)
+            - list all albums, enumerated, by release date
+        - allow user to choose an album by entering number (a to return to above
+          (artist) menu)
+            - list all songs in album by track order
+            - prompt user to return to previous (album) menu
+    """
+    while True:
+        print_artists(database)
+        artist_choice = raw_input('Enter # of artist or <q> to quit: ')
+        if artist_choice != 'q':
+            artist_choice = int(artist_choice) - 1
+        else:
+            sys.exit(0)
+        artist_choice = sorted_artists()[artist_choice]
+
+        while True:
+            print_albums(database, artist_choice)
+            # ---------
+            album_choice = raw_input('Enter # of album or <a> to return to previous menu: ')
+            if album_choice == 'a':
+                break       # jump to print_artists loop
+            elif album_choice != 'q':
+                album_choice = int(album_choice) - 1
+            else:
+                sys.exit(0)
+            album_choice = sorted_albums()[album_choice]
+            # ---------
+            print_songs(database, album_choice)
+            # ---------
+            jump_to_album_menu = raw_input('Return to album menu? (y/n) ')
+            if jump_to_album_menu == 'y':
+                print('\n')
+                continue    # jump back to print_albums loop
+            elif jump_to_album_menu == 'n':
+                sys.exit(0)
+
+def delete_albums():
+    """
+    -d: delete album
+        - display menus allowing user to choose an album to delete
+    """
+    while True:
+        print_artists(database)
+        artist_choice = raw_input('Enter # of artist or <q> to quit: ')
+        if artist_choice != 'q':
+            artist_choice = int(artist_choice) - 1
+        else:
+            sys.exit(0)
+        artist_choice = sorted_artists()[artist_choice]
+
+        while True:
+            print_albums(database, artist_choice)
+            # ---------
+            album_choice = raw_input('Enter # of album to delete or <a> to return to previous menu: ')
+
+            if album_choice == 'a':
+                break       # jump to print_artists loop
+            elif album_choice != 'q':
+                album_choice = int(album_choice) - 1
+            else:
+                sys.exit(0)
+            print_songs(database, album_choice)
+            album_choice = sorted_albums()[album_choice]
+            for i in database:
+                if i['album'] == album_choice:
+                    database.remove(i)
+            delete_from_database(database)
+            break       # jump to print_artists loop
+
+def add_albums():
+    """
+    -a: add album
+        - prompt user for:
+            - artist
+            - album name
+            - release date
+            - track list (assume entered in track order)
+    """
+    artist = raw_input('Enter artist name: ')
+    album = raw_input('Enter album name: ')
+    release_date = raw_input('Enter release date: ')
+
+    print('Enter song titles, press <enter> again to save')
+    track_list = []
+    while True:
+        line = raw_input('Song name: ')
+        if not line:   # if user hits enter twice without entering input, break
+            break
+        track_list.append(line)
+
+    added_entries = []  # create new (sub) database for added items
+    added_entries.append({
+        'artist' : artist,
+        'release_date' : release_date,
+        'album' : album,
+        'songs' : track_list})
+
+    write_to_database(added_entries)    # write sub database to actual database
+
+# -----------------------------------------------------------------------------
+
+def main():
+    """ process command line arguments """
+    db_file = environ["CDDB"]       # environment variable to be set before running
+
+    with open(db_file, 'r') as file:     # CDDB is an environment variable
+        f = file.read()
+    file.close()
+
+    contents = f.split('\n\n')    # split database by each album
+
+    global database     # global so all functions can use database
+    database = []       # placeholder for empty database
+
+    # store .db file into memory
+    songss = []
+    for i in range(len(contents)-1):
+        songss = contents[i].splitlines()[2:]
+
+        # add info for each album to database
+        database.append({
+            'artist':contents[i].splitlines()[0],
+            'release_date':contents[i].splitlines()[1][0:4],
+            'album':contents[i].splitlines()[1][5:],
+            'songs':songss})
+
+    # argument parser for command line input
+    parser = argparse.ArgumentParser(description="CD Database")
+    parser.add_argument('-l', action="store_true", help='list items in database')
+    parser.add_argument('-d', action="store_true", help='delete items from database')
+    parser.add_argument('-a', action="store_true", help='add items to the database')
+
+    args = parser.parse_args()
+
+    if args.l:
+        list_albums()
+    elif args.d:
+        delete_albums()
+    elif args.a:
+        add_albums()
+    else:
+        parser.print_help()
+        sys.exit(0)
+
+if __name__ == "__main__":
+    main()

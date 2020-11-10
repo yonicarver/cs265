@@ -1,0 +1,112 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 06
+
+TABLE FUNCTIONS
+--------------------------
+Q1. What is the difference between add() and addSuffix?
+    add: add word to the suffix list and update the prefix
+    addSuffix: add a suffix to the hash table
+
+Q2. What does lookup do? Which function(s) call lookup?
+    lookup: searches for a prefix or creates one if needed, function returns a
+    pointer to the current prefix if it is present/created and returns NULL
+    if no prefix is present/created
+    used by: generate() & add()
+
+
+STRINGS
+--------------------------
+Q3. Include the table in your lab sheet. How many references (pointers) are
+    there to each string?
+    a. "It's" -- 3
+    b. "a" ----- 3
+    c. "new" --- 3
+    d. "dawn" -- 2
+    ?
+
+    PREFIX	   |	SUFFIX
+    -----------------------
+    (null) (null) |	It's
+    (null) It's   |	a
+    It's a	   |	new
+    a new		   |	dawn
+    new dawn	   |	(null)
+
+Q4. What are the advantages of this?
+    Each string is stored with only the memory it needs
+
+
+Q5. What are the drawbacks?
+    One must free the memory once the program is finished
+
+
+Q6. Write a function to clean up statetab when we're all done, give the memory
+    back (don't spend a lot of time here). In-line your function here, in the
+    lab-sheet.
+
+    void clean(State *statetab) {
+    	    while ( statetab != NULL ) {
+    	    	    free( statetab );
+    	    }
+    }
+
+
+Q7. Does your function work properly? What difficulties did you have?
+    I believe so, I had trouble remembering how to tell if a pointer's contents
+    contains memory, I think it's if it == NULL
+
+Q8. Take a step back from the table. How could you make sure that each string
+    was freed exactly once?
+    Once the memory is freed, it cannot be freed again (program may crash)
+    or
+    Set the pointer to NULL after using it
+
+
+THE C++ IMPLEMENTATION
+--------------------------
+Q9. How are the prefixes stored? Why not use a vector?
+    Stored in a deque (double ended queue)
+    One can pop the first element & add an element to the end
+
+
+Q10. What serves as our dictionary (replaces our hash table)?
+	A map
+
+
+Q11. How is the satellite data (list of suffices) stored?
+	A vector of suffices
+
+
+Q12. Are there any advantages to this implementation over the C implementation?
+	What are they?
+	Built in functions (standard library), fewer created pointers
+
+
+Q13. Are there any drawbacks?
+	More memory usage (slower)
+
+
+THE PYTHON IMPLEMENTATION
+--------------------------
+Q14. How are the prefixes stored?
+	Tuples
+
+
+Q15. What serves as our dictionary (replaces our hash table)?
+	A dictionary
+
+
+Q16. How is the satellite data (list of suffices) stored?
+	A list
+
+
+Q17. Are there any advantages to this implementation over the C++ implementation?
+	What are they?
+	Python is a dynamically typed language (one does not have to specify a variable
+	type)
+
+
+Q18. Are there any drawbacks?
+	Everything is stored as an object (tuple, dictionary, list, etc.) and one
+	cannot allocate, reallocate, or free memory

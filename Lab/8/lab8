@@ -1,0 +1,45 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 08
+
+INTERFACES
+--------------------------
+Q1. Describe what is meant by each of the following:
+	i. Hide implementation details
+	   Implementation of a program should not affect the user
+
+	ii. Choose a small orthogonal set of primitives
+	    Use non-overlapping functions and capabilities that do one thing well
+
+	iii. Don't reach behind the user's back
+		The interface should not do anything that the user doesn't know about
+
+	iv. Do the same thing the same way everywhere
+	    One should implement the same style/interface/program styles consistently
+
+CSV IMPLEMENTATION
+Q2. What are the problems w/the first implementation in C (Labs/Interfaces/csvgetline1.c)?
+    Cannot have more than 200 chars in buffer & no more than 20 chars in a field
+
+Q3. What things were improved upon in the first revision in C?
+    Clearer variable names, no buffer or field limits
+
+Q4. What problems does the first revision (Labs/Interfaces/csvgetline2.c) still have?
+    Can you parse 2 different CSV files at the same time? Explain.
+    Empty spaces not handled properly
+    Cannot parse 2 CSV files at the same time
+
+Q5. Does the C++ implementation solve these problems? What issues still remain?
+    Issue of handling empty fields (although does allow reading input from stdin)
+
+Q6. Does the interface for the C++ implementation adhere to our guidelines for
+    a good i/f, from lecture?
+    Yes.
+
+Q7. Re-write csvgetline2.c so that you can parse more than one file.
+    see csvgetline2.c
+
+
+MAKEFILES
+--------------------------
+see Makefile

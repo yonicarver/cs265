@@ -1,0 +1,72 @@
+1. cp ~kschmidt/public_html/schedule.html ~/public_html/Personal/
+
+2. cp ~kschmidt/public_html/schedule.html ./
+
+3. ls run*.log
+	ls run[A-Z]*.log
+
+4. chmod 0511 myScript.heather
+
+5. echo $PATH
+
+6. ps -e -o pmem -o comm | sort -nr | head -5
+
+7. who | awk '{ print $1 }' | sort -u
+	who | awk '{ print $1 }' | sort | uniq
+
+8. c[Hh]oco\b
+
+9. \<br\/>.*$
+	\<br\/>\s*$
+
+10. n
+
+11. binary search needs list to be sorted
+
+12. Hide implementation details
+	Choose a small, orthogonal set of primitives
+	Don’t reach behind the user’s back
+	Do the same thing the same way everywhere
+
+13. Error handling
+	Resource management
+
+14. Pre-conditions Assumptions that are made by a function or
+	method upon entry, of necessity or efficiency
+	Units or state of arguments
+	State of the object
+	State of globals
+
+15. Post-condition Anything a function guarantees upon exit (if
+	pre-conditions were met
+	Return value
+	Any side-effects
+
+16. purpouse of testing
+	find errors/bugs in code
+	program doesn't do what it shouldn't do
+
+17. black box testing
+	Functional (black box) testing:
+	Implementation details are invisible
+	Code is tested to its specs
+	Inputs, outputs
+	Also test for error codes and exceptions
+	Can be written before the code is written
+
+
+18. white box testing
+	Structural (white box) testing:
+	Details are visible
+	Exercise all control paths
+	Test border conditions
+
+19. section #
+
+20. which editor are you using (vim editor)
+
+21. :w
+
+22. w
+
+23. dd

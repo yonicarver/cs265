@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Yonatan Carver
+# CS 265 - Assignment 1 - Problem 1
+
+# -----------------------------------------------------------------------------
+
+# DESCRIPTION: Find the number of directories containing a problem and find the
+#			total number of messages sent
+# INPUTS: ARCHIVE (location to run this script)
+# OUTPUTS: xx yy
+#		xx: number of directories containing problems
+#		yy: total number of messages
+
+# -----------------------------------------------------------------------------
+
+# find all files that begin with "prob"
+# (both num_dirs & num_messages need this line, find it once)
+base=$(find $ARCHIVE -name "prob*" -printf '%h\n')
+
+# number of directories containing problems
+num_dirs=$(echo "$base" | sort -u | wc -l)
+
+# total number of messages sent
+num_messages=$(echo "$base" | wc -l)
+
+echo "$num_dirs $num_messages"

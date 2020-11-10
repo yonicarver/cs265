@@ -1,0 +1,88 @@
+README
+Yonatan Carver
+
+CS 265 - Advanced Programming Techniques
+Assignment 1
+
+Due: 2/15/2018
+--------------------------------------------------------------------------------
+List of Files:
+	- README
+	- prob1
+	- prob2
+	- prob3
+	- prob4
+
+
+
+===============================================================================
+NAME:
+	prob1
+===============================================================================
+PROBLEM:
+	Determine the number of directories containing problems. Observe that there
+	is only one message per file. What is the total number of messages sent?
+	Output 2 columns on a single line, the # of directories, and the total # of
+	messages sent.
+
+DESCRIPTION: Find the number of directories containing a problem and find the
+		   total number of messages sent
+INPUTS: ARCHIVE (location to run this script)
+OUTPUTS:	xx yy
+		xx: number of directories containing problems
+		yy: total number of messages
+
+
+
+===============================================================================
+NAME:
+	prob2
+===============================================================================
+PROBLEM:
+	Determine how many messages are in the longest thread. List all the threads
+	that are of that length.
+
+DESCRIPTION: Find the longest thread and list all threads of that length
+INPUTS: ARCHIVE (location to run this script)
+OUTPUTS:	xx filename
+		xx: thread length
+		filename: names of files with longest length
+
+
+
+===============================================================================
+NAME:
+	prob3
+===============================================================================
+PROBLEM:
+	Write a script that takes, as command-line arguments, the year, month, and
+	day, in that order and returns a list of messages that were sent on that day.
+
+DESCRIPTION: Scrape through email archives and return name of files that were
+		   sent on the user-specified date (day/month/year)
+INPUTS:	ARCHIVE (location to run this script)
+		year month day (order specific)
+OUTPUTS:
+		list of messages sent on day/year/month (command-line inputs)
+
+
+
+===============================================================================
+NAME:
+	prob4
+===============================================================================
+PROBLEM:
+	In each message, pull out the target hostname (not the full email address)
+	from the To: line (be careful about finding quoted To: lines). How many
+	distinct hostnames are there? How many messages were sent to each. output
+	2 columns, the hostname and # of messages sent there. 1 record per line,
+	sorted by column 2, in descending order. The last line shall be "total nnn",
+	where nnn is the total # of distinct hostnames.
+
+DESCRIPTION: Find the hostnames (sender's email address) and count how many there
+		   are in the ARCHIVE directory. Count total hostnames.
+INPUTS: ARCHIVE (location to run this script)
+OUTPUTS:	hostname xx
+		total yy
+		xx: hostname & number of times it appears
+		yy: total number of hostnames

@@ -1,0 +1,47 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 10
+
+PERFORMANCE
+--------------------------
+Q1.1 Supply your chart (that is just tabular data, n, T(n), T(n)/f(n) for various
+	choices of f(n)), not a graph, in your gradesheet, and your conclusions
+
+							T(n)/f(n)
+	--------------------------------------------------
+	n		T(n)		f(n)=n	f(n)=n^2	f(n)=n^3
+	--------------------------------------------------
+	10000	2.404	.00024	24.0E-09	24.04E-13
+	20000	5.164	.000258	12.9E-09	6.455E-13
+	30000	8.108	.00027	9.01E-09	3.003E-13
+	40000	11.488	.000287	7.18E-09	1.795E-13
+	50000	14.18	.000284	5.67E-09	1.134E-13
+	60000	17.456	.000291	4.85E-09	.8081E-13
+	70000	20.516	.000293	4.19E-09	.5981E-13
+	80000	32.584	.000407	5.09E-09	.6364E-13
+
+	Conclusion: T(n) increases to infinity, T(n) = w(f(n)) & is bounded
+				below by a constant
+			  f(n) increases to infinity, T(n) = w(f(n)) & is a lower bound
+			  f(n^2) decreases, f(n) is the upper bound, T(n) = o(f(n))
+			  f(n^3) decreases, f(n) is the upper bound, T(n) = o(f(n))
+
+Q1.2 Supply your chart (just the tabular data, no graphs), and your conclusions
+	in your lab sheet
+
+							T(n)/f(n)
+	--------------------------------------------------
+	n		T(n)		f(n)=n	f(n)=n^2	f(n)=n^3
+	--------------------------------------------------
+	10000	45721062	4572.106	4.57E-01	45.7E-06
+	20000	98107982	4905.399	2.45E-01	12.3E-06
+	30000	153522280	5117.409	1.71E-01	5.69E-06
+	40000	210173451	5254.336	1.31E-01	3.28E-06
+	50000	265180908	5303.618	1.06E-01	2.12E-06
+	60000	319847373	5330.79	.888E-01	1.48E-06
+
+	Conclusion: T(n) increases to infinity (linearly), T(n) = w(1) & is bounded
+				below by a constant
+			  f(n) increases to a constant, T(n) = w(f(n))
+			  f(n^2) decreases, f(n) is the upper bound, T(n) = o(f(n))
+			  f(n^3) decreases, f(n) is the upper bound, T(n) = o(f(n))

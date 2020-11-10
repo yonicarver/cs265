@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Yonatan Carver
+# CS 265 - Assignment 1 - Problem 3
+
+# -----------------------------------------------------------------------------
+
+# DESCRIPTION: Scrape through email archives and return name of files that were
+#			sent on the user-specified date (day/month/year)
+# INPUTS: ARCHIVE (location to run this script)
+#		year month day (order specific)
+# OUTPUTS:
+#		list of messages sent on day/year/month (command-line inputs)
+
+# -----------------------------------------------------------------------------
+
+# command-line inputs
+year=$1
+month=$2
+day=$3
+
+# create variable with proper date format
+date="$month/$day/$year"
+
+# search and return filename containing date
+echo "$(grep -lr "$date" "$ARCHIVE" | egrep -o "prob.*")"
+

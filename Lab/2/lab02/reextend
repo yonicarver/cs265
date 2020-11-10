@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# -------------------------------------
+# Yoni Carver
+# CS 265 - Advanced Programming
+#
+# 1/26/2018
+# Ubuntu 16.04.3 LTS
+#
+# -------------------------------------
+
+
+case $# in
+	[0])
+		echo -e "\nEntered 0: must enter two\n"
+		exit 1
+		;;
+	[1])
+		echo -e "\nEntered 1 argument: must enter two\n"
+		exit 2
+		;;
+	[2])
+		#echo -e "\nEntered 2\n"
+
+		for file in *$1
+		do
+			mv "$file" "${file/$1/$2}"
+		done
+		exit 0
+		;;
+	[[0-9]|8[0-9])
+		echo -e "\nEntered >= 3 argument: must enter two\n"
+		exit 2
+		;;
+esac
+

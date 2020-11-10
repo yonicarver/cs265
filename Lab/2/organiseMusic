@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# -------------------------------------
+# Yoni Carver
+# CS 265 - Advanced Programming
+#
+# 1/26/2018
+# Ubuntu 16.04.3 LTS
+#
+# -------------------------------------
+
+for file in *.mp3
+do
+	artist=${file% - *}
+	song=${file##* - }
+	mkdir -p "$artist"
+	mv "$file" "$artist"/"$song"
+done

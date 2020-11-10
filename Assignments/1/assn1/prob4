@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Yonatan Carver
+# CS 265 - Assignment 1 - Problem 4
+
+# -----------------------------------------------------------------------------
+
+# DESCRIPTION: Find the hostnames (sender's email address) and count how many there
+#			are in the ARCHIVE directory. Count total hostnames.
+# INPUTS: ARCHIVE (location to run this script)
+# OUTPUTS: hostname xx
+#		 total yy
+#		xx: hostname & number of times it appears
+#		yy: total number of hostnames
+
+# -----------------------------------------------------------------------------
+
+# get a list of all hosts
+hostnames=$(egrep -hroi -m1 "^To:.*@[^[[:space:]]*]*" $ARCHIVE | sed -e "s/.*@//" | sort -rn)
+num_hosts=$(echo "$hostnames" | uniq -ic | sort -rn)
+
+# return hostname & quantity
+echo "$num_hosts" | awk '{print $2, $1}'
+
+# return total number of hosts
+echo "total" $(echo "$num_hosts" | wc -l)

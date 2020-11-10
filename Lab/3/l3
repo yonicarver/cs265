@@ -1,0 +1,51 @@
+Yonatan Carver
+CS265 - Advanced Programming
+Lab 03
+
+------------------------------
+Regular Expressions
+------------------------------
+using egrep
+
+Q1.1 Match all the lines that contain the string 'the'
+	egrep 'the' bright_side_of_life
+
+Q2.2	Match all the lines that contain the word 'the' (not as a substring of a larger word)
+	egrep -w 'the' bright_side_of_life
+
+Q1.3 Match all the lines that contain the word 'Just'
+	egrep -w 'Just' bright_side_of_life
+
+Q1.4 Match all the lines that contain 'Just' or 'just'
+	egrep '(J|j)ust' bright_side_of_life
+
+Q1.5 Match all the lines that start with the word 'Just' or 'just'
+	egrep -w '^(J|j)ust' bright_side_of_life
+
+Q1.6 Match all the lines that contain the word 'bad' or 'mad'
+	egrep '(b|m)ad' bright_side_of_life
+
+Q1.7 Match all the lines that contain the word 'death' or 'breath'
+	egrep '(d|br)eath' bright_side_of_life
+
+Q1.8 Match all lines that end with 'you'. Trailing punctiation is acceptable.
+	egrep -w 'you[[:punct:]]$' bright_side_of_life
+
+Q1.9 Match lines that have leading whitespace
+	egrep '^\s' bright_side_of_life
+
+Q1.10 Match blank lines
+	egrep '^\s*$' bright_side_of_life
+
+Q1.11 How many are there?
+	12 (egrep '^\s*$' bright_side_of_life | wc -l)
+
+------------------------------
+Git
+------------------------------
+Q3.1 What command did you use to recover your answers after you deleted them?
+	git revert
+
+Q3.2 How will we be able to tell if you cheated and never deleted your answers in the first place?
+	Check the git log (git log) and verify that revert is a commit entry
+
